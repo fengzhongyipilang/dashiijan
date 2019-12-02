@@ -150,11 +150,10 @@
         }
 
 
-        $('body').on('click', '.btn-xs', function() {
+        $('body').on('click', '.btn-danger', function() {
             var myid = $(this).attr('data-id')
             if (confirm('确定删除吗?')) {
                 $.ajax({
-
                     url: 'http://localhost:8000/admin/category_delete',
                     type: 'post',
                     data: {

@@ -106,32 +106,13 @@
         }
     </script>
 
-
+    <script src="js/user.js"></script>
     <script>
         $('#loginout').click(function() {
-            $.ajax({
-                url: 'http://localhost:8000/admin/logout',
-                type: 'post',
-                success: function(res) {
-                    if (res.code === 200) {
-                        location.href = 'login.html'
-                    }
-                }
-            })
+            user.loginout();
         })
 
-
-
-        $.ajax({
-            url: 'http://localhost:8000/admin/getuser',
-            type: 'get',
-            success: function(res) {
-                if (res.code == 200) {
-                    $('.touxiang').prop('src', res.data.user_pic);
-                    $('#myname').text(res.data.nickname).css('font-style', 'normal')
-                }
-            }
-        })
+        user.getinfo();
     </script>
 </body>
 

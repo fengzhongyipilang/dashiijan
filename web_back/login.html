@@ -57,6 +57,8 @@
 
     <script src="./js/jquery-1.12.4.min.js"></script>
     <script src="./js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/user.js"></script>
+
     <script>
         //注册的登录事件 阻止表单提交
 
@@ -75,24 +77,7 @@
                 return;
             }
 
-            $.ajax({
-                url: 'http://localhost:8000/admin/login',
-                data: {
-                    user_name: username,
-                    password: password
-                },
-                type: 'post',
-                success: function(res) {
-
-                    $('#myModal').modal('show');
-                    $('#myMsg').text(res.msg);
-                    if (res.code === 200) {
-                        location.href = 'index.html'
-                    }
-
-                }
-            })
-
+            user.login(username, password);
 
         })
     </script>
