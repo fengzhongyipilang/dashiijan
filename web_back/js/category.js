@@ -1,5 +1,3 @@
-var baseUrl = 'http://localhost:8000/'
-
 var category = {
 
     //获取
@@ -32,7 +30,24 @@ var category = {
     },
 
     //修改
+    edit: function(id, name, slug, callback) {
+        $.ajax({
+            url: baseUrl + 'admin/category_edit',
+            type: 'post',
+            data: {
+                id: id,
+                name: name,
+                slug: slug
+            },
+            success: function(res) {
+                callback(res)
+            }
 
+
+
+        })
+
+    },
     //删除
     delete: function(myid, callback) {
 
