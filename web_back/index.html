@@ -109,10 +109,20 @@
     <script src="js/user.js"></script>
     <script>
         $('#loginout').click(function() {
-            user.loginout();
+            user.loginout(function(res) {
+                if (res.code === 200) {
+                    location.href = 'login.html'
+                }
+            });
+
         })
 
-        user.getinfo();
+        user.getinfo(function(res) {
+            if (res.code == 200) {
+                $('.touxiang').prop('src', res.data.user_pic);
+                $('#myname').text(res.data.nickname).css('font-style', 'normal')
+            }
+        });
     </script>
 </body>
 

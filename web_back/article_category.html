@@ -93,23 +93,12 @@
                 return;
             }
 
-            $.ajax({
-                url: 'http://localhost:8000/admin/category_add',
-                type: 'post',
-                data: {
-                    name: name,
-                    slug: slug
-                },
-                success: function(res) {
-                    if (res.code === 200) {
-                        alert(res.msg);
-                        LoadData();
-                    }
+            category.add(name, slug, function(res) {
+                if (res.code === 200) {
+                    alert(res.msg);
+                    LoadData();
                 }
-
             })
-
-
             $('#addModal').modal('hide');
         });
 
@@ -120,21 +109,18 @@
         //     }
         // })
     </script>
-
+    <script src="./js/category.js"></script>
     <script>
         LoadData();
 
         function LoadData() {
-            $.ajax({
-                url: 'http://localhost:8000/admin/category_search',
-                type: 'get',
-                success: function(res) {
-                    var str = ''
-                    if (res.code == 200) {
+            category.get(function(res) {
+                var str = ''
+                if (res.code == 200) {
 
-                        res.data.forEach(function(item) {
+                    res.data.forEach(function(item) {
 
-                            str += `<tr>
+                        str += `<tr>
                         <td>${item.name}</td>
                         <td>${item.slug}</td>
                         <td class="text-center">
@@ -142,32 +128,34 @@
                             <a href="javascript:" class="btn btn-danger btn-xs" data-id='${item.id}'>删除${item.id}</a>
                         </td>
                     </tr>`
-                        });
-                        $('tbody').html(str)
-                    }
+                    });
+                    $('tbody').html(str)
                 }
             })
         }
 
 
+
+
+        //删除功能
         $('body').on('click', '.btn-danger', function() {
             var myid = $(this).attr('data-id')
             if (confirm('确定删除吗?')) {
-                $.ajax({
-                    url: 'http://localhost:8000/admin/category_delete',
-                    type: 'post',
-                    data: {
-                        id: myid
-                    },
-                    success: function(res) {
-                        if (res.code === 200) {
-                            alert(res.msg);
-                            LoadData();
-                        }
+                category.delete(myid, function(res) {
+                    if (res.code === 200) {
+                        alert(res.msg);
+                        LoadData();
                     }
                 })
+
             }
         })
+
+
+        //编辑功能
+        // $('body').on('click','.btn-info',function(){
+
+        // })
     </script>
 
 </body>

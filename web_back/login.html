@@ -77,8 +77,16 @@
                 return;
             }
 
-            user.login(username, password);
+            user.login(username, password,
+                function(res) {
+                    $('#myModal').modal('show');
+                    $('#myMsg').text(res.msg);
+                    if (res.code === 200) {
+                        location.href = 'index.html'
+                    }
 
+                }
+            )
         })
     </script>
 </body>

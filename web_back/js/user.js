@@ -1,32 +1,27 @@
 var baseUrl = 'http://localhost:8000/'
 
 var user = {
-    loginout: function() {
+    loginout: function(callback) {
         $.ajax({
             url: 'http://localhost:8000/admin/logout',
             type: 'post',
             success: function(res) {
-                if (res.code === 200) {
-                    location.href = 'login.html'
-                }
+                callback(res);
             }
         })
     },
 
-    getinfo: function() {
+    getinfo: function(callback) {
         $.ajax({
             url: 'http://localhost:8000/admin/getuser',
             type: 'get',
             success: function(res) {
-                if (res.code == 200) {
-                    $('.touxiang').prop('src', res.data.user_pic);
-                    $('#myname').text(res.data.nickname).css('font-style', 'normal')
-                }
+                callback(res)
             }
         })
     },
 
-    login: function(username, password) {
+    login: function(username, password, callback) {
         $.ajax({
             url: 'http://localhost:8000/admin/login',
             data: {
@@ -35,13 +30,7 @@ var user = {
             },
             type: 'post',
             success: function(res) {
-
-                $('#myModal').modal('show');
-                $('#myMsg').text(res.msg);
-                if (res.code === 200) {
-                    location.href = 'index.html'
-                }
-
+                callback(res)
             }
         })
     }
