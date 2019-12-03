@@ -42,11 +42,7 @@ var category = {
             success: function(res) {
                 callback(res)
             }
-
-
-
         })
-
     },
     //删除
     delete: function(myid, callback) {
