@@ -59,6 +59,4 @@ var category = {
         })
     }
 
-
-
 }
