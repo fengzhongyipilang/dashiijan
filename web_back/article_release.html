@@ -23,23 +23,24 @@
             写文章
         </div>
         <div class="container-fluid common_con">
-            <form class="form-horizontal article_form">
+            <form class="form-horizontal article_form" id="myform">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章标题：</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="文章标题">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="文章标题" name="title">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">文章封面：</label>
+                    <img id="imgPreview" src="./images/2.jpg" alt="article_img" style="width: 50px;height: 50px;position: absolute;left: 416px;top: 133px;">
                     <div class="col-sm-10">
-                        <input type="file" id="exampleInputFile">
+                        <input type="file" id="exampleInputFile" name="cover">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
                     <div class="col-sm-4">
-                        <select class="form-control">
+                        <select class="form-control" name="type">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -53,7 +54,7 @@
                     <div class="col-sm-4">
 
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="YYYY-MM-DD" id="dateinput">
+                            <input type="text" class="form-control" placeholder="YYYY-MM-DD" id="dateinput" name="date">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button"
                                     onclick="jeDate('#dateinput',{trigger:false,format: 'YYYY-MM-DD'})"><i
@@ -79,6 +80,62 @@
             </form>
         </div>
     </div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/category.js"></script>
+
+    <script id="temp_cate" type="text/html">
+        {{each data item}}
+        <option>{{item.name}}</option>
+        {{/each}}
+    </script>
+    <script>
+        category.get(function(res) {
+            if (res == 200) {
+                var htmlStr = template('temp_cate', res)
+                console.log(htmlStr);
+                $('#categoryContainer').html(htmlStr)
+            }
+
+        })
+
+        //图片显示
+        $('#exampleInputFile').change(function() {
+            var file = this.files[0];
+            var url = URL.createObjectURL(file);
+            $('#imgPreview').attr('src', url)
+        })
+
+
+        //发布文章
+        $('.btn-success').click(function() {
+
+            var myform = $('myform')[0];
+            var fd = new FormData(myform);
+
+
+            fd.append('state', '已发布'); //为什么要拼接这个参数呢？
+
+            $.ajax({
+
+                url: 'http://localhost:8000/admin/article_publish',
+                data: fd,
+                type: 'post',
+                success: function(res) {
+                    alert('嘿嘿,你添加成功了哦!');
+                    if (res.msg) {
+                        location.href = 'article_list.html';
+                    }
+                },
+                processData: false,
+                contentType: false
+            })
+
+
+
+
+        })
+    </script>
 
 </body>
 
