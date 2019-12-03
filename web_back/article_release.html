@@ -84,17 +84,11 @@
     <script src="./js/config.js"></script>
     <script src="./js/category.js"></script>
 
-    <script id="temp_cate" type="text/html">
-        {{each data item}}
-        <option>{{item.name}}</option>
-        {{/each}}
-    </script>
+
     <script>
         category.get(function(res) {
             if (res == 200) {
-                var htmlStr = template('temp_cate', res)
-                console.log(htmlStr);
-                $('#categoryContainer').html(htmlStr)
+
             }
 
         })

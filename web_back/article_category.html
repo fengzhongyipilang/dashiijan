@@ -176,13 +176,26 @@
         $('body').on('click', '.btn-danger', function() {
             var myid = $(this).attr('data-id')
             if (confirm('确定删除吗?')) {
-                category.delete(myid, function(res) {
-                    if (res.code === 200) {
-                        alert(res.msg);
-                        LoadData();
+                // category.delete(myid, function(res) {
+                //     if (res.code === 200) {
+                //         alert(res.msg);
+                //         LoadData();
+                //     }
+                // })
+
+                $.ajax({
+                    url: "http://localhost:8000/admin/category_delete",
+                    type: 'post',
+                    data: {
+                        id: myid
+                    },
+                    success: function(res) {
+                        if (res.code === 200) {
+                            alert(res.msg);
+                            LoadData();
+                        }
                     }
                 })
-
             }
         })
 
