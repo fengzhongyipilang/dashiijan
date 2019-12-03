@@ -83,6 +83,10 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
+                            <label for="recipient-id" class="control-label">分类ID:</label>
+                            <input type="text" class="form-control" id="cate-edit-id">
+                        </div>
+                        <div class="form-group">
                             <label for="recipient-name" class="control-label">分类名称:</label>
                             <input type="text" class="form-control" id="cate-edit-name">
                         </div>
@@ -192,7 +196,7 @@
             $('#editModal').modal('show');
 
             //拿到当前点击目标的值给了弹出框的编辑值
-            //   $('#cate-edit-id').val(id)
+            $('#cate-edit-id').val(id)
             $('#cate-edit-name').val(name)
             $('#cate-edit-slug').val(slug)
 
