@@ -12,8 +12,8 @@ var apis = {
     //文章相关接口
     article_get: baseUrl + 'admin/search',
 
-    //获取文章
-
+    //增加文章
+    article_add: baseUrl + 'admin/article_publish',
 
     //删除文章
 
