@@ -106,8 +106,6 @@
 
         };
 
-        loadData()
-
         function loadData() {
             article.get(data, function(res) {
 
@@ -118,6 +116,7 @@
                 showPage(res.current, res.totalPage)
             });
         }
+        loadData()
     </script>
 
     <script>
