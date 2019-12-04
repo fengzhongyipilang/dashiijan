@@ -78,6 +78,13 @@
         </div>
     </div>
 
+    <script>
+        //编辑页面最重要的是通过id传值过来确定是哪个id
+
+        var str = window.location.search
+        var id = str.substr(4);
+        console.log(id); //拿到了在原来list页面后缀拼接的id
+    </script>
 </body>
 
 </html>
