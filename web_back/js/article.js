@@ -29,7 +29,7 @@ var article = {
     },
 
     //编辑
-    edit: function(id, callback) {
+    edit: function(fd, callback) {
         $.ajax({
             type: 'post',
             url: apis.article_edit,
