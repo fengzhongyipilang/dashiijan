@@ -41,11 +41,11 @@
                     <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
                     <div class="col-sm-4">
                         <select class="form-control" name="type">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <!-- <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option> -->
                         </select>
                     </div>
                 </div>
@@ -73,8 +73,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-success">发布</button>
-                        <button type="submit" class="btn btn-default">存为草稿</button>
+                        <button type="button" class="btn btn-success">发布</button>
+                        <button type="button" class="btn btn-default">存为草稿</button>
                     </div>
                 </div>
             </form>
@@ -82,17 +82,30 @@
     </div>
 
     <script src="./js/config.js"></script>
+    <script src="./js/article.js"></script>
     <script src="./js/category.js"></script>
+    <script src="./js/template.js"></script>
+
+    <script type="text/html" id="template">
+        {{each arr v}}
+        <option value="{{v.id}}">{{v.name}}</option>
+        {{/each}}
+    </script>
+
+    <script>
+        //获取分类
+
+        category.get(function(res) {
+            var str = template('template', {
+                arr: res.data
+            });
+
+            $('select').html(str)
+        })
+    </script>
 
 
     <script>
-        category.get(function(res) {
-            if (res == 200) {
-
-            }
-
-        })
-
         //图片显示
         $('#exampleInputFile').change(function() {
             var file = this.files[0];
@@ -104,28 +117,34 @@
         //发布文章
         $('.btn-success').click(function() {
 
-            var myform = $('myform')[0];
-            var fd = new FormData(myform);
+            //  var myform = $('myform')[0];
+            var fd = new FormData(document.querySelector('form')); //需要注意name属性
 
 
-            fd.append('state', '已发布'); //为什么要拼接这个参数呢？
+            fd.append('state', '已发布'); //为什么要拼接这个参数呢？  状态只有两个状态 已发布/未发布
 
-            $.ajax({
+            fd.set('content', tinyMCE.activeEditor.getContent()) //修改内容  这个dataform获取不到
 
-                url: 'http://localhost:8000/admin/article_publish',
-                data: fd,
-                type: 'post',
-                success: function(res) {
-                    alert('嘿嘿,你添加成功了哦!');
-                    if (res.msg) {
-                        location.href = 'article_list.html';
-                    }
-                },
-                processData: false,
-                contentType: false
+            // $.ajax({
+
+            //     url: 'http://localhost:8000/admin/article_publish',
+            //     data: fd,
+            //     type: 'post',
+            //     success: function(res) {
+            //         alert('嘿嘿,你添加成功了哦!');
+            //         if (res.msg) {
+            //             location.href = 'article_list.html';
+            //         }
+            //     },
+            //     processData: false,
+            //     contentType: false
+            // })
+
+            article.add(fd, function(res) {
+                if (res.code === 201) {
+                    location.href = 'article_list.html';
+                }
             })
-
-
 
 
         })

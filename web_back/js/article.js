@@ -8,7 +8,7 @@ var article = {
     },
 
     //添加
-    add: function(callback) {
+    add: function(fd, callback) {
         $.ajax({
             type: 'post',
             url: apis.article_add,
