@@ -4,7 +4,7 @@ var category = {
 
     get: function(callback) {
         $.ajax({
-            url: baseUrl + 'admin/category_search',
+            url: apis.category_get,
             type: 'get',
             success: function(res) {
                 callback(res);
@@ -16,7 +16,7 @@ var category = {
 
     add: function(name, slug, callback) {
         $.ajax({
-            url: baseUrl + 'admin/category_add',
+            url: apis.category_add,
             type: 'post',
             data: {
                 name: name,
@@ -32,7 +32,7 @@ var category = {
     //修改
     edit: function(id, name, slug, callback) {
         $.ajax({
-            url: baseUrl + 'admin/category_edit',
+            url: apis.category_edit,
             type: 'post',
             data: {
                 id: id,
@@ -48,7 +48,7 @@ var category = {
     delete: function(myid, callback) {
 
         $.ajax({
-            url: baseUrl + 'admin/category_delete',
+            url: apis.category_delete,
             type: 'post',
             data: {
                 id: myid

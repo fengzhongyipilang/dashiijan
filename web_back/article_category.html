@@ -153,8 +153,8 @@
             <td>{{v.name}}</td>
             <td>{{v.slug}}</td>
             <td class="text-center">
-                <a href="javascript:" class="btn btn-info btn-xs" data-id='${item.id}' data-name='${item.name}' data-slug='${item.slug}'>编辑{{v.id}}</a>
-                <a href="javascript:" class="btn btn-danger btn-xs" data-id='${item.id}'>删除{{v.id}}</a>
+                <a href="javascript:" class="btn btn-info btn-xs" data-id='{{v.id}}' data-name='{{v.name}}' data-slug='{{v.slug}}'>编辑{{v.id}}</a>
+                <a href="javascript:" class="btn btn-danger btn-xs" data-id='{{v.id}}'>删除{{v.id}}</a>
             </td>
         </tr>
         {{/each}}
