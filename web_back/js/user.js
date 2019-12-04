@@ -1,7 +1,7 @@
 var user = {
     loginout: function(callback) {
         $.ajax({
-            url: 'http://localhost:8000/admin/logout',
+            url: apis.user_loginout,
             type: 'post',
             success: function(res) {
                 callback(res);
@@ -11,7 +11,7 @@ var user = {
 
     getinfo: function(callback) {
         $.ajax({
-            url: 'http://localhost:8000/admin/getuser',
+            url: apis.user_getinfo,
             type: 'get',
             success: function(res) {
                 callback(res)
@@ -21,7 +21,7 @@ var user = {
 
     login: function(username, password, callback) {
         $.ajax({
-            url: 'http://localhost:8000/admin/login',
+            url: apis.user_login,
             data: {
                 user_name: username,
                 password: password
