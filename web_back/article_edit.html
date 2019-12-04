@@ -118,7 +118,7 @@
 
         var str = window.location.search
         var id = str.substr(4);
-        console.log(id); //拿到了在原来list页面后缀拼接的id
+        // console.log(id); //拿到了在原来list页面后缀拼接的id
 
 
 
@@ -144,10 +144,12 @@
             fd.append("id", id);
 
             article.edit(fd, function(res) {
-
                 console.log(res);
+
                 if (res === 200) {
                     alert('你编辑成功了!')
+                    location.href = "index.html"
+
                 } else {
                     alert('编辑失败了!')
                 }
