@@ -1,7 +1,7 @@
 var article = {
 
     //发布
-    get: function(callback) {
+    get: function(data, callback) {
         $.get(apis.article_get, data, function(res) {
             callback(res);
         });
@@ -10,6 +10,6 @@ var article = {
     //添加
     add: function() {
 
-    }
+    },
 
 }

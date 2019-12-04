@@ -102,7 +102,7 @@
         //获取数据
 
         var data = {
-            page: 1
+
 
         };
 
@@ -113,7 +113,7 @@
                     opo: res.data
                 })
                 $('tbody').html(str);
-                showPage(res.current, res.totalPage)
+                showPage(res.page, res.totalPage)
             });
         }
         loadData()
