@@ -102,29 +102,38 @@
         //获取数据
 
         var data = {
-            page: 3
+            page: 1
 
         };
-        article.get(data, function(res) {
 
-            var str = template('article', {
-                opo: res.data
-            })
-            $('tbody').html(str);
-        });
+        loadData()
+
+        function loadData() {
+            article.get(data, function(res) {
+
+                var str = template('article', {
+                    opo: res.data
+                })
+                $('tbody').html(str);
+                showPage(res.current, res.totalPage)
+            });
+        }
     </script>
 
     <script>
-        $(function() {
+        function showPage(c, t) {
             $("#pagination").pagination({
-                currentPage: 1,
-                totalPage: 8,
+                currentPage: c,
+                totalPage: t,
+                count: 10,
                 callback: function(current) {
-                    alert('ok!');
+                    console.log(current);
+                    data.page = current; //获取到当前点击页然后刷新
+                    loadData();
                 }
             });
-        });
+        }
     </script>
 </body>
 
-</html>
+</html>;
