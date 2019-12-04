@@ -203,16 +203,20 @@
 
         //编辑功能
         $('body').on('click', '.btn-info', function() {
-            var id = $(this).attr('data-id');
-            var name = $(this).attr('data-name');
-            var slug = $(this).attr('data-slug');
+            // var id = $(this).attr('data-id');
+            // var name = $(this).attr('data-name');
+            // var slug = $(this).attr('data-slug');
+
+
+            //获取自定义属性方法
+            var data = this.dataset;
 
             $('#editModal').modal('show');
 
             //拿到当前点击目标的值给了弹出框的编辑值
-            $('#cate-edit-id').val(id)
-            $('#cate-edit-name').val(name)
-            $('#cate-edit-slug').val(slug)
+            $('#cate-edit-id').val(data.id)
+            $('#cate-edit-name').val(data.name)
+            $('#cate-edit-slug').val(data.slug)
 
 
             var that = $(this);
