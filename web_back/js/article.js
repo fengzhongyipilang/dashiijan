@@ -26,5 +26,19 @@ var article = {
         $.get(apis.article_delete, { id }, function(res) {
             callback(res);
         })
+    },
+
+    //编辑
+    edit: function(id, callback) {
+        $.ajax({
+            type: 'post',
+            url: apis.article_edit,
+            data: fd,
+            success: function(res) {
+                callback(res)
+            },
+            processData: false,
+            contentType: false
+        })
     }
 }

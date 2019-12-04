@@ -19,6 +19,6 @@ var apis = {
     article_delete: baseUrl + 'admin/article_delete',
 
     //编辑文章
-
+    article_edit: baseUrl + 'admin/article_edit',
     //根据id获取文章
 }
