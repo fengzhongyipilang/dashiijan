@@ -16,7 +16,7 @@ var apis = {
     article_add: baseUrl + 'admin/article_publish',
 
     //删除文章
-
+    article_delete: baseUrl + 'admin/article_delete',
 
     //编辑文章
 

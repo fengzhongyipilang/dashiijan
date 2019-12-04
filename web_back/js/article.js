@@ -21,4 +21,10 @@ var article = {
         })
     },
 
+    //删除
+    delete: function(id, callback) {
+        $.get(apis.article_delete, { id }, function(res) {
+            callback(res);
+        })
+    }
 }
