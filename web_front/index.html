@@ -160,8 +160,8 @@
             </div>
             <div class="common_wrap">
                 <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
-                <ul class="content_list comment_list">
-                    <li>
+                <ul class="content_list comment_list" id="ping">
+                    <!-- <li>
                         <span>山</span>
                         <b><em>山治</em> 9个月前(08-14)说:</b>
                         <strong>挺会玩的</strong>
@@ -190,7 +190,7 @@
                         <span>乔</span>
                         <b><em>乔峰</em> 9个月前(08-14)说:</b>
                         <strong>挺会玩的</strong>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <div class="common_wrap">
@@ -338,11 +338,27 @@
 
   <!-- 最新评论开始------------------- -->
 
-     <script>
-         article.pinlun()
-     
-     </script>
-  <!-- 最新评论结束------------------- -->
+
+  <script type="text/html" id="pinlun">
+    {{each pinlun v}}
+         <li>
+             <span>{{v.name}}</span>
+             <b><em>{{v.name}}</em> {{v.dt}}</b>
+                <strong>{{v.content}}</strong>
+                </li>
+                {{/each}}
+    </script>
+
+    <script>
+        article.pinlun(function(res) {
+            console.log(res)
+            var str = template("pinlun", {
+                pinlun: res.data
+            })
+            $('#ping').append(str)
+        })
+    </script>
+    <!-- 最新评论结束------------------- -->
 </body>
 
 </html>
