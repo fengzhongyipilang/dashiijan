@@ -45,8 +45,12 @@ var article = {
         $.post(apis.article_liuyan, function(res) {
             callback(res)
         })
+    },
+    list: function(article_id, callback) {
+        $.get(apis.article_list, function(res) {
+            callback(res)
+        })
     }
-
 
 
 }
