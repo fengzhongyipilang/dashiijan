@@ -27,9 +27,14 @@ var article = {
         $.get(apis.article_pinlun, function(res) {
             callback(res)
         })
-    }
+    },
 
-
+    //焦点关注
+    focus: function(callback) {
+        $.get(apis.article_focus, function(res) {
+            callback(res)
+        })
+    },
 
 
 

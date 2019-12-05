@@ -19,4 +19,7 @@ var apis = {
     //评论接口
     article_pinlun: baseUrl + 'latest_comment',
 
+    //焦点关注接口
+    article_focus: baseUrl + 'focus',
+
 }

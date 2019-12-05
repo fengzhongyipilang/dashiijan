@@ -195,14 +195,14 @@
             </div>
             <div class="common_wrap">
                 <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
-                <ul class="content_list guanzhu_list">
-                    <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
+                <ul class="content_list guanzhu_list" id="shuipao">
+                    <!-- <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
                     <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
                     <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
                     <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
                     <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
                     <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+                    <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li> -->
                 </ul>
             </div>
         </div>
@@ -359,6 +359,27 @@
         })
     </script>
     <!-- 最新评论结束------------------- -->
+
+    <!-- 焦点关注开始----------------- -->
+
+    <script type="text/html" id="focus">
+        {{each focus v}}
+        <li><a href="#">{{v.title}}</a></li>
+        {{/each}}
+    </script>
+
+
+    <script>
+        article.focus(function(res) {
+
+            var str = template("focus", {
+                focus: res.data
+            })
+            $('#shuipao').append(str)
+        })
+    </script>
+
+    <!-- 焦点关注结束--------------- -->
 </body>
 
 </html>
