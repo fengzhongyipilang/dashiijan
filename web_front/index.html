@@ -8,6 +8,7 @@
     <title>大事件-首页</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/jquery.pagination.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -30,21 +31,21 @@
                 <a href="javascript:;" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
                 <ul class="level_two">
                     <li class="up"></li>
-                    <li><a href="#">最 新</a></li>
+                    <!-- <li><a href="#">最 新</a></li>
                     <li><a href="#">科 技</a></li>
                     <li><a href="#">股 市</a></li>
                     <li><a href="#">商 品</a></li>
                     <li><a href="#">外 汇</a></li>
-                    <li><a href="#">公 司</a></li>
+                    <li><a href="#">公 司</a></li> -->
                 </ul>
             </div>
             <ul class="left_menu fl">
-                <li><a href="#">最 新</a></li>
+                <!-- <li><a href="#">最 新</a></li>
                 <li><a href="#">科 技</a></li>
                 <li><a href="#">股 市</a></li>
                 <li><a href="#">商 品</a></li>
                 <li><a href="#">外 汇</a></li>
-                <li><a href="#">公 司</a></li>
+                <li><a href="#">公 司</a></li> -->
             </ul>
             <ul class="right_menu fr">
                 <li><a href="#">科技专题</a></li>
@@ -56,7 +57,7 @@
     <div class="main_con clearfix">
         <div class="left_con">
             <ul class="focus_list">
-                <li class="first">
+                <!-- <li class="first">
                     <a href="#"><img src="images/pic01.jpg" alt=""></a>
                     <p>图片说明</p>
                 </li>
@@ -75,7 +76,7 @@
                 <li>
                     <a href="#"><img src="images/pic06.jpg" alt=""></a>
                     <p>图片说明</p>
-                </li>
+                </li> -->
             </ul>
 
             <div class="common_title">
@@ -221,10 +222,55 @@
         <p>电话：0755-****888 粤ICP备*******8号</p>
     </div>
 
-    <script src="js/jquery.pagination.min.js"></script>
+
     <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/template.js"></script>
     <script src="js/category.js"></script>
     <script src="js/config.js"></script>
+    <script src="js/article.js"></script>
+
+    <!-- 导航分类开始------------- -->
+    <script type="text/html" id="template">
+        {{each opo v}}
+        <li><a href="#">{{v.name}}</a></li>
+
+        {{/each}}
+    </script>
+
+    <script>
+        category.show(function(res) {
+            var str = template('template', {
+                opo: res.data
+            })
+            $('.level_two').append(str);
+            $('.left_menu').html(str);
+        })
+    </script>
+    <!-- 导航分类结束 ---------------->
+
+    <!-- 热点图------------------------- -->
+
+    <script type="text/html" id="redian">
+        {{each redian v k}} {{if k===0}}
+        <li class="first">
+            {{else}}
+        </li>
+        {{/if}}
+        <a href="#"><img src="{{v.cover}}" alt=""></a>
+        <p>{{v.title}}</p>
+        </li>
+        {{/each}}
+    </script>
+
+    <script>
+        article.hopbic(function(res) {
+            var str = template("redian", {
+                redian: res.data
+            })
+            $('.focus_list').html(str)
+        })
+    </script>
+
 </body>
 
 </html>
