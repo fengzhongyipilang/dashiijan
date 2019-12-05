@@ -8,10 +8,13 @@ var apis = {
 
     //文章接口
     article_hopbic: baseUrl + 'hotpic',
+    article_article: baseUrl + 'article',
 
     //咨询接口
     article_late: baseUrl + 'latest',
 
     //排行接口
     article_rank: baseUrl + 'rank',
+
+
 }
