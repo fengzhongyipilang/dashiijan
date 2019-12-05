@@ -35,10 +35,12 @@ var article = {
             url: apis.article_edit,
             data: fd,
             success: function(res) {
+                console.log(res);
+
                 callback(res)
             },
             processData: false,
-            contentType: false
+            contentType: false,
         })
     }
 }

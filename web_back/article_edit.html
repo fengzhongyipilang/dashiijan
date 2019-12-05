@@ -72,7 +72,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-success">修改</button>
+                        <button type="button" class="btn btn-success">修改</button>
                     </div>
                 </div>
             </form>
@@ -118,7 +118,7 @@
 
         var str = window.location.search
         var id = str.substr(4);
-        // console.log(id); //拿到了在原来list页面后缀拼接的id
+        console.log(id); //拿到了在原来list页面后缀拼接的id
 
 
 
@@ -146,10 +146,9 @@
             article.edit(fd, function(res) {
                 console.log(res);
 
-                if (res === 200) {
+                if (res.code === 200) {
                     alert('你编辑成功了!')
-                    location.href = "index.html"
-
+                    location.href = "article_list.html"
                 } else {
                     alert('编辑失败了!')
                 }
