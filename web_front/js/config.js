@@ -9,7 +9,7 @@ var apis = {
     //文章接口
     article_hopbic: baseUrl + 'hotpic',
     article_article: baseUrl + 'article',
-
+    article_search: baseUrl + 'search',
     //咨询接口
     article_late: baseUrl + 'latest',
 

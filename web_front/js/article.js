@@ -36,7 +36,11 @@ var article = {
         })
     },
 
-
+    search: function(data, callback) {
+        $.get(apis.article_search, function(res) {
+            callback(res)
+        })
+    }
 
 
 }
