@@ -40,7 +40,13 @@ var article = {
         $.get(apis.article_search, function(res) {
             callback(res)
         })
+    },
+    liuyan: function(data, callback) {
+        $.post(apis.article_liuyan, function(res) {
+            callback(res)
+        })
     }
+
 
 
 }

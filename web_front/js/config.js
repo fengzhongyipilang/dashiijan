@@ -22,4 +22,6 @@ var apis = {
     //焦点关注接口
     article_focus: baseUrl + 'focus',
 
+    //评论列表
+    article_liuyan: baseUrl + 'post_comment',
 }
