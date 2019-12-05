@@ -17,6 +17,6 @@ var apis = {
     article_rank: baseUrl + 'rank',
 
     //评论接口
-    article_pinlun: baseUrl + 'post_comment',
+    article_pinlun: baseUrl + 'latest_comment',
 
 }
