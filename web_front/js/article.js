@@ -9,5 +9,11 @@ var article = {
         $.get(apis.article_late, function(res) {
             callback(res)
         })
+    },
+    rank: function(callback) {
+        $.get(apis.article_rank, function(res) {
+            callback(res)
+        })
     }
+
 }

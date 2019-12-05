@@ -11,5 +11,7 @@ var apis = {
 
     //咨询接口
     article_late: baseUrl + 'latest',
-    //评论接口
+
+    //排行接口
+    article_rank: baseUrl + 'rank',
 }

@@ -303,10 +303,22 @@
     <!-- 最新资讯结束 -------------->
 
     <!-- 一周热门排行开始------------------ -->
-
-
+     
+    <script type="text/html" id="rank">
+        {{each redian v k}} {{if k===0}}
+       
+    </script>
        
     <!-- 一周热门排行结束-------------- -->
+    <script>
+       article.rank(function(res) {
+            var str = template("rank", {
+                rank: res.data
+            })
+            $('.common_title').after(str)
+        })
+    
+    </script>
 </body>
 
 </html>
