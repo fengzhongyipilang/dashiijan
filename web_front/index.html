@@ -246,7 +246,7 @@
             $('.left_menu').html(str);
         })
     </script>
-    <!-- 导航分类结束 ---------------->
+    <!-- 导航分类结束 ---------------------->
 
     <!-- 热点图------------------------- -->
 
@@ -254,12 +254,12 @@
         {{each redian v k}} {{if k===0}}
         <li class="first">
             {{else}}
-        </li>
-        {{/if}}
-        <a href="#"><img src="{{v.cover}}" alt=""></a>
-        <p>{{v.title}}</p>
-        </li>
-        {{/each}}
+            <li>
+                {{/if}}
+                <a href="#"><img src="{{v.cover}}" alt=""></a>
+                <p>{{v.title}}</p>
+            </li>
+            {{/each}}
     </script>
 
     <script>
