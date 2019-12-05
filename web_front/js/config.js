@@ -16,5 +16,7 @@ var apis = {
     //排行接口
     article_rank: baseUrl + 'rank',
 
+    //评论接口
+    article_pinlun: baseUrl + 'post_comment',
 
 }
