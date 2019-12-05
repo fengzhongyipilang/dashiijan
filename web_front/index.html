@@ -148,7 +148,7 @@
         <div class="right_con">
             <div class="common_wrap">
                 <h3><i class="fa fa-bar-chart"></i> 一周热门排行</h3>
-                <ul class="content_list">
+                <ul class="content_list" id="shuidi">
                     <li><span class="first">1</span><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
                     <li><span class="second">2</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
                     <li><span class="third">3</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
@@ -256,7 +256,6 @@
             {{else}}
             <li>
                 {{/if}}
-                <a href="#"><img src="{{v.cover}}" alt=""></a>
                 <p>{{v.title}}</p>
             </li>
             {{/each}}
@@ -305,20 +304,34 @@
     <!-- 一周热门排行开始------------------ -->
      
     <script type="text/html" id="rank">
-        {{each redian v k}} {{if k===0}}
+        {{each rank v k}} {{if k===0}}
+        <li><span class="first">{{k+1}}</span>
+        {{else if k===1}}
+        <li><span class="second">{{k+1}}</span>
+        {{else if k===2}}
+        <li><span class="third">{{k+1}}</span>
+        {{else}}
+        <li>
+                <span>{{k+1}}</span>
+                {{/if}}
+                <a href="#">{{v.title}}</a>
+            </li>
+        {{/each}}
        
     </script>
        
-    <!-- 一周热门排行结束-------------- -->
+  
     <script>
        article.rank(function(res) {
             var str = template("rank", {
                 rank: res.data
             })
-            $('.common_title').after(str)
         })
-    
+        $('#shuidi').append(str)
     </script>
+
+
+  <!-- 一周热门排行结束-------------- -->
 </body>
 
 </html>
