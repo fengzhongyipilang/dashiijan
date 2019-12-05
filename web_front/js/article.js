@@ -41,13 +41,13 @@ var article = {
             callback(res)
         })
     },
-    liuyan: function(data, callback) {
-        $.post(apis.article_liuyan, function(res) {
+    fabiao: function(data, callback) {
+        $.post(apis.article_fabiao, data, function(res) {
             callback(res)
         })
     },
-    list: function(article_id, callback) {
-        $.get(apis.article_list, function(res) {
+    liuyanlist: function(article_id, callback) {
+        $.get(apis.article_liuyanlist, function(res) {
             callback(res)
         })
     }

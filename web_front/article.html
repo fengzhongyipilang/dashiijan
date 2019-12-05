@@ -96,7 +96,7 @@
             </div>
 
             <div class="comment_list_con">
-                <div class="comment_detail_list">
+                <!-- <div class="comment_detail_list">
                     <div class="person_pic fl">乔</div>
                     <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
                     <div class="comment_text fl">
@@ -123,7 +123,7 @@
                     <div class="comment_text fl">
                         遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="right_con setfl">
@@ -236,8 +236,8 @@
             var str = template("template", res.data)
             $('.breadcrumb').after(str)
         })
-
-
+    </script>
+    <script>
         //评论留言功能
         $('.comment_sub').click(function() {
             var name = $('.comment_name').val().trim();
@@ -245,22 +245,46 @@
             var data = {
                 name: name,
                 content: content,
-                article_id: id
             }
 
-            article.liuyan(data, function() {
-                $.post(apis.article_liuyan, function(res) {
-                    //console.log(res)
-                    if (res.code === 200) {
-                        alert("添加成功!")
-                    } else {
-                        alert("憨批,添加的不对!")
-                    }
-                })
+            // console.log(data)
+            article.fabiao(data, function(res) {
+                alert(res.msg);
+                loadData()
             })
         })
+    </script>
 
-        //获取留言列表功能
+
+    <!-- 获取留言列表功能------------------- -->
+    <script type="text/html" id="list">
+        {{each list v}}
+        <div class="comment_detail_list">
+            <div class="person_pic fl">{{v.name}}</div>
+            <div class="name_time fl"><b>{{v.name}}</b><span>{{v.dt}}</span></div>
+            <div class="comment_text fl">
+                {{v.content}}
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
+
+
+    <script>
+        loadData()
+
+        function loadData() {
+            $('.comment_list_con').empty();
+            article.liuyanlist(id, function(res) {
+                // console.log(res)
+
+                var str = template("list", {
+                    list: res.data
+                })
+                $('.comment_list_con').append(str)
+            })
+        }
     </script>
 </body>
 

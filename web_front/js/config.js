@@ -22,9 +22,9 @@ var apis = {
     //焦点关注接口
     article_focus: baseUrl + 'focus',
 
-    //留言列表
-    article_liuyan: baseUrl + 'post_comment',
+    //发表留言
+    article_fabiao: baseUrl + 'post_comment',
 
     //评论列表接口
-    article_list: baseUrl + 'get_comments'
+    article_liuyanlist: baseUrl + 'get_comments'
 }
