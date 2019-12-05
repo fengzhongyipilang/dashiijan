@@ -88,7 +88,7 @@
                     <textarea placeholder="请发表您的评论" class="comment_input"></textarea>
                 </div>
                 <div class="form_group">
-                    <input type="submit" name="" value="评 论" class="comment_sub"></div>
+                    <input type="button" name="" value="评 论" class="comment_sub"></div>
             </form>
 
             <div class="comment_count">
@@ -235,6 +235,29 @@
         article.article(id, function(res) {
             var str = template("template", res.data)
             $('.breadcrumb').after(str)
+        })
+
+
+        //评论留言功能
+        $('.comment_sub').click(function() {
+            var name = $('.comment_name').val().trim();
+            var content = $('.comment_input').val().trim();
+            var data = {
+                name: name,
+                content: content,
+                article_id: id
+            }
+
+            article.liuyan(data, function() {
+                $.post(apis.article_liuyan, function(res) {
+                    //console.log(res)
+                    if (res.code === 200) {
+                        alert("添加成功!")
+                    } else {
+                        alert("憨批,添加的不对!")
+                    }
+                })
+            })
         })
     </script>
 </body>
